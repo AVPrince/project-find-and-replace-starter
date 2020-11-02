@@ -19,9 +19,24 @@ function getCellElements (currentRowElement) {
     return currentRowElement.querySelectorAll(".cell")
 }
 
+replaceAllButton.addEventListener('click', function (event){
+    let find = findInput.value;
+    let change = replaceInput.value;
+    
+    for (let index = 0; index < rowElements.length; index=index+1) {
+        let allCells = getCellElements(rowElements[index]);
 
-// YOUR CODE GOES HERE
+        for (let letters = 0; letters < allCells.length; letters=letters+1) {
+            // console.log(allCells[letters].innerHTML);
+            // console.log(allCells[letters].innerHTML.includes(find));
 
+            if (allCells[letters].innerHTML.includes(find)) {
+                console.log("Found a match");
+                allCells[letters].innerHTML = allCells[letters].innerHTML.replace(find, change);
+            }
+        }
+    }
+})
 
 // One last thing: dedicate very careful attention to using variables and
 // naming them accurately.
